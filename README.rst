@@ -3,26 +3,17 @@
 ckanext-zippreview
 =============
 
-.. Put a description of your extension here:
-   What does it do? What features does it have?
-   Consider including some screenshots or embedding a video!
-
+Preview contents of ZIP files, even if they are hosted on external sites!
 
 ------------
 Requirements
 ------------
 
-For example, you might want to mention here which versions of CKAN this
-extension works with.
-
+CKAN 2.3+ (Resource view support)
 
 ------------
 Installation
 ------------
-
-.. Add any additional install steps to the list below.
-   For example installing any non-Python dependencies or adding any required
-   config settings.
 
 To install ckanext-zippreview:
 
@@ -34,24 +25,13 @@ To install ckanext-zippreview:
 
      pip install ckanext-zippreview
 
-3. Add ``zip_view`` to the ``ckan.plugins`` setting in your CKAN
+3. Add ``zip_view`` to the ``ckan.plugins`` setting and ``ckan.views.default_views`` setting in your CKAN
    config file (by default the config file is located at
    ``/etc/ckan/default/production.ini``).
 
 4. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu::
 
      sudo service apache2 reload
-
-
----------------
-Config Settings
----------------
-
-Document any optional config settings here. For example::
-
-    # The minimum number of hours to wait before re-checking a resource
-    # (optional, default: 24).
-    ckanext.zippreview.some_setting = some_default_value
 
 
 ------------------------
@@ -65,73 +45,3 @@ do::
     cd ckanext-zippreview
     python setup.py develop
     pip install -r dev-requirements.txt
-
-
------------------
-Running the Tests
------------------
-
-To run the tests, do::
-
-    nosetests --nologcapture --with-pylons=test.ini
-
-To run the tests and produce a coverage report, first make sure you have
-coverage installed in your virtualenv (``pip install coverage``) then run::
-
-    nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.zippreview --cover-inclusive --cover-erase --cover-tests
-
-
----------------------------------
-Registering ckanext-zippreview on PyPI
----------------------------------
-
-ckanext-zippreview should be availabe on PyPI as
-https://pypi.python.org/pypi/ckanext-zippreview. If that link doesn't work, then
-you can register the project on PyPI for the first time by following these
-steps:
-
-1. Create a source distribution of the project::
-
-     python setup.py sdist
-
-2. Register the project::
-
-     python setup.py register
-
-3. Upload the source distribution to PyPI::
-
-     python setup.py sdist upload
-
-4. Tag the first release of the project on GitHub with the version number from
-   the ``setup.py`` file. For example if the version number in ``setup.py`` is
-   0.0.1 then do::
-
-       git tag 0.0.1
-       git push --tags
-
-
-----------------------------------------
-Releasing a New Version of ckanext-zippreview
-----------------------------------------
-
-ckanext-zippreview is availabe on PyPI as https://pypi.python.org/pypi/ckanext-zippreview.
-To publish a new version to PyPI follow these steps:
-
-1. Update the version number in the ``setup.py`` file.
-   See `PEP 440 <http://legacy.python.org/dev/peps/pep-0440/#public-version-identifiers>`_
-   for how to choose version numbers.
-
-2. Create a source distribution of the new version::
-
-     python setup.py sdist
-
-3. Upload the source distribution to PyPI::
-
-     python setup.py sdist upload
-
-4. Tag the new release of the project on GitHub with the version number from
-   the ``setup.py`` file. For example if the version number in ``setup.py`` is
-   0.0.2 then do::
-
-       git tag 0.0.2
-       git push --tags
