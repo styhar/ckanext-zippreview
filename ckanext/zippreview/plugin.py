@@ -64,7 +64,7 @@ def zip_list(rsc):
         try:
             zf = zipfile.ZipFile(upload.get_path(rsc['id']),'r')
             value = zf.filelist
-        except Exception:
+        except Exception, e:
             # Sometimes values that can't be converted to ints can sneak
             # into the db. In this case, just leave them as they are.
             pass

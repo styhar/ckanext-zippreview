@@ -32,7 +32,7 @@
 
                         <ul class="ziptree" style="list-style: none;">
                             {%- for item in tree recursive %}
-                            <li style="list-style: none;"><i class="icon-{{ item['icon'] }}"></i>  {{ item["title"] }}
+                            <li style="list-style: none;    word-break: break-all;-ms-word-break:break-all;"><i class="icon-{{ item['icon'] }}"></i>  {{ item["title"] }}
                                 {% if "file_size" in item %}
                                 <small>({{item["file_size"]}})</small>
                                 {% endif %}
