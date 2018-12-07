@@ -5,7 +5,10 @@ import zipfile
 from ckan.lib import uploader, formatters
 import requests, cStringIO
 from collections import OrderedDict
-import urllib2, struct, sys
+import urllib2
+import struct
+import sys
+import re
 
 def getZipListFromURL(url):
 
@@ -83,7 +86,7 @@ def zip_tree(rsc):
         if extension in ['xml', 'txt', 'json']:
             return "file-text"
         if extension in ['csv', 'xls']:
-            return "bar-chart"
+            return "bar-chart-o"
         if extension in ['shp', 'geojson', 'kml', 'kmz']:
             return "globe"
         return "file"
@@ -101,9 +104,9 @@ def zip_tree(rsc):
         else:
             parts = compressed_file.filename.split("/")
             if parts[-1] != "":
-                child = {"title": parts.pop(),
+                child = {"title": re.sub(r'[^\x00-\x7f]',r'', parts.pop()),
                          "file_size": (formatters.localised_filesize(compressed_file.file_size)),
-                         "children": [], "icon": get_icon(compressed_file.filename)}
+                         "children": [], "icon": get_icon(re.sub(r'[^\x00-\x7f]',r'',compressed_file.filename))}
                 parent = '/'.join(parts)
                 if parent not in tree:
                     tree[parent] = {"title": parent, "children": [], "icon": 'folder-open'}
